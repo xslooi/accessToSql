@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Access导出SQL文件</title>
+    <!--
+    Access导出SQL文件
+    -->
+    <link href="public/css/jquery-ui.css" rel="stylesheet">
+    <!--顶部提示插件-->
+    <link href="public/css/overhang.min.css" rel="stylesheet">
+    <link href="public/css/custom.css" rel="stylesheet">
+    <!--拖拽插件-->
+
+    <script data-main="public/js/main" src="public/js/require.js"></script>
+    <!-- todo 谨记：main.js 加载了两次当然里边代码执行两次  <script src="public/js/main.js"></script>-->
+</head>
+<body>
+
+<div class="custom-state-box">
+    <h2 class="demoHeaders">状态显示：</h2>
+    <div class="custom-state-container">
+        <ol>
+            <li>
+                <fieldset>
+                    <legend>配置状态</legend>
+                    <div id="statusgroup">
+                        <span>
+                            导出库状态：<i id="from-db-state" class="ui-state-error ui-corner-all custom-state-text">未测试</i>
+                        </span>
+                    </div>
+
+                </fieldset>
+            </li>
+            <li>
+                <fieldset>
+                    <legend>导出进度</legend>
+                    <div id="progressbar"></div>
+                </fieldset>
+            </li>
+            <li>
+                <fieldset>
+                    <legend>控制面板</legend>
+
+                    <button id="start-button" class="ui-button ui-corner-all ui-widget">开始导出</button>
+                </fieldset>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<!-- 手风琴 -->
+<h2 class="demoHeaders">操作步骤：</h2>
+
+
+<div id="accordion">
+    <h3>步骤一：上传导出数据库文件</h3>
+    <div class="container one" style="height: 200px">
+        <div class="custom-form-box custom-left">
+            <h4>上传导出数据库文件</h4>
+            <form class="cfg_form" id="from_cfg_form" name="from_cfg_form" enctype="multipart/form-data">
+                <ol>
+                    <li><label>数据库文件：</label><input type='file' name='access_file' id="access_file"/></li>
+                    <li><label>上传信息：</label><span style="color: red" id="fileTypeError"></span></li>
+                    <li><label></label><button id="updata-file-button" class="ui-button ui-corner-all ui-widget" type="button">上传文件</button></li>
+                </ol>
+            </form>
+        </div>
+    </div>
+    <h3>步骤二：选择导出数据表（需要重置数据库表并保存配置-默认全选）</h3>
+    <div class="container two">
+        <input name="list1SortOrder" type="hidden" />
+        <h4>
+            <button id="form-cate-cfg-save-button" class="ui-button ui-corner-all ui-widget">保存配置</button>
+            <button id="form-cate-cfg-reset-button" class="ui-button ui-corner-all ui-widget">重置数据库表</button>
+            <button id="form-cate-cfg-select-button" class="ui-button ui-corner-all ui-widget">全选/反选</button>
+        </h4>
+        <div class="custom-form-box custom-left">
+            <h4>导出数据库数据表-列表</h4>
+            <form id="from_select_tables_lists" enctype="multipart/form-data">
+            <ul class="to-field" id="from_tables_lists">
+                <li><i>X</i><div data-id="1">暂无数据请重置加载</div></li>
+            </ul>
+            </form>
+        </div>
+        <div class="custom-form-box custom-right">
+            <h4>导出数据表列表</h4>
+            <ol id="to_tables_lists">
+
+            </ol>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>
